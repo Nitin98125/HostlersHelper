@@ -18,3 +18,11 @@ select{
   background: none;
   border:2px solid;
 }
+
+#cyp_authform{
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform:rotateY(180deg);
+}

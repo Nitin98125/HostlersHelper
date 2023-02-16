@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginForm from "./Authentication/login";
 import Home from "./home";
 import SignupForm from "./Authentication/signup";
-import CompleteYourProfile from "./completeprofile";
+import Profile from "./profile";
 
 const RoutesDefiner = () => {
     return (
@@ -11,7 +11,7 @@ const RoutesDefiner = () => {
             <Route path='/' element={<Home/>}></Route>
             <Route path='login' element={<LoginForm/>}></Route>
             <Route path='register' element={<SignupForm/>}></Route>
-            <Route path='completeprofile' element={<CompleteYourProfile/>}></Route>
+            <Route path='profile' element={<Profile/>}></Route>
         </Routes>
         </BrowserRouter>
     );

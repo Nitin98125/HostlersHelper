@@ -10,12 +10,14 @@ module.exports.UserAdder = async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
-  // const token=user.generateJWT()
+  // const token=await user.generateJWT();
+  // console.log(token);
   return res.status(200).send(user);
 };
 
 module.exports.userUpdater = async (req, res) => {
   const user_incoming = req.body.user;
+  if(user_incoming.userId=='') return res.send('Hello');
   const user = await User.findOneAndUpdate(
     { _id: user_incoming.userId },
     {
@@ -32,5 +34,6 @@ module.exports.userUpdater = async (req, res) => {
       new: true,
     }
   ); 
-  return res.status(200).send(user);
+  if(user) return res.status(200).send(user);
+  return res.status(400).send('User Not Found');
 };

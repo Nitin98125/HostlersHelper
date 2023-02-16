@@ -16,6 +16,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  perspective: 1500px;
 }
 .auth::before {
   content: "";
@@ -64,9 +65,8 @@ p {
 form {
   width: 40%;
   text-align: center;
-  align-items: center;
-  justify-content: center;
   margin-top: 100px;
+  transform-style: preserve-3d;
 }
 form .login,
 form .signup {
@@ -76,15 +76,15 @@ form .signup {
   justify-content: center;
 }
 #authform{
-  width: 90%;
-  margin: auto;
-}
-/* #authform_signed{
-  transform: rotateY(180deg);
-  transition: all 2s;
+  width: 100%;
+  position: absolute;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-} */
+}
+#form_signed{
+  transform: rotateY(180deg);
+  transition: all 2s;
+}
 .btn_auth {
   margin-top: 40px;
   margin-bottom: 30px;
@@ -92,7 +92,7 @@ form .signup {
 #google_auth {
   width: 90%;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #gg {
   font-size: 20px;
@@ -130,6 +130,7 @@ form .signup {
 }
 #nxt_signup {
   min-width: 75px;
+  margin-top: 3%;
 }
 #nxt:hover,#nxt_signup:hover {
   border: 1px solid black;
@@ -197,7 +198,7 @@ form input {
   width: 25%;
   font-size: 20px;
   font-weight: bold;
-  margin-top: 15%;
+  margin-top:3%;
   padding: auto;
   min-width: 90px;
   text-align: center;

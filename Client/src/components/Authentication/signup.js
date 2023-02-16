@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import OtpStatus from "./otp_status";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import CompleteYourProfile from "../completeprofile";
 
 const SignupForm = () => {
-  const navigate = useNavigate();
-
-  const {setAuth} = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const validateEmail = (email) => {
     return String(email)
@@ -54,9 +53,9 @@ const SignupForm = () => {
 
   const otp_generator = async () => {
     if (validateEmail(user.email)) {
-      const userexist=await axios.post('/userExists',{email:user.email});
-      if(userexist.data){
-        alert('User Already Exists');
+      const userexist = await axios.post("/userExists", { email: user.email });
+      if (userexist.data) {
+        alert("User Already Exists");
         return;
       }
       set_otp_click(1);
@@ -69,11 +68,11 @@ const SignupForm = () => {
       setbtnd(1);
       setOtp("");
       const data = { email: user.email };
-      const res = await axios.post("/signup", data);
-      if (res.status === 200) {
+      try {
+        const res = await axios.post("/signup", data);
         set_sent_otp(1);
         setbtnd(0);
-      } else {
+      } catch {
         setuntc(1);
       }
       setwaitsent(0);
@@ -122,24 +121,24 @@ const SignupForm = () => {
   };
 
   const Signedin = async () => {
-    // if (
-    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(\W|_)).{5,}$/.test(user.password)
-    // ) {
-      const res=await axios.post('/userAdder',user);
+    if (
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(\W|_)).{5,}$/.test(user.password)
+    ) {
+      const res = await axios.post("/userAdder", user);
       setSigned(1);
       setAuth(res.data);
-      navigate("/completeprofile");
-    // }
-    // else{
-    //   alert('Enter Valid Password');
-    // }
+    } else {
+      alert("Enter Valid Password");
+    }
   };
+
+  if (auth._id && !signed) return <Navigate to="/" />;
 
   return (
     <div className="auth">
       <div className="form">
-        <form>
-          <div id={signed ? "authform_signed" : "authform"}>
+        <form id={signed ? "form_signed" : "form_unsigned"}>
+          <div id={"authform"}>
             <h1 className="signup">Signup</h1>
             <div className="btn_auth">
               <button id="google_auth">
@@ -254,6 +253,7 @@ const SignupForm = () => {
               </label>
             </div>
           </div>
+          <CompleteYourProfile signed={signed} />
         </form>
       </div>
       <div className="animation">

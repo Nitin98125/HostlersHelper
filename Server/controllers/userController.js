@@ -49,7 +49,7 @@ module.exports.signUp = async (req, res) => {
   //     return res.status(200).send("OTP SENDED SUCCESSFULLY");
   //   })
   //   .catch((err) => {
-  //     return res.status(404).send("Sorry Unable to reload");
+  //     return res.status(400).send("Sorry Unable to reload");
   //   });
   setTimeout(() => {
     return res.status(200).send("OTP SENDED SUCCESSFULLY");

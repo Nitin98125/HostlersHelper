@@ -1,0 +1,30 @@
+.user_profile {
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.user_details,
+.user_buttons {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.user_details label {
+  margin-top: 10px;
+}
+
+.user_buttons button {
+  color: white;
+  background-color: rgb(33, 219, 55);
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: auto;
+  line-height: 30px;
+  margin:auto;
+  margin-top: 5%;
+}

@@ -1,0 +1,28 @@
+.Cyp {
+  text-align: left;
+  width: 90%;
+  margin: auto;
+}
+.inputs_cyp label {
+  font-size: 18px;
+  font-weight: 550;
+}
+select{
+  border-radius: 9px;
+  height: 40px;
+  padding: 10px;
+  padding-bottom: 8px;
+  margin: 9px 0 9px 0;
+  width: 100%;
+  font-size: 15px;
+  background: none;
+  border:2px solid;
+}
+
+#cyp_authform{
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform:rotateY(180deg);
+}
